@@ -2,9 +2,11 @@ cedet是根据 http://emacser.com/cedet.htm 设置的。
 一起那用 auto-complete + clang 感觉好卡，就全卸了，用的 CVS 版的 edet.
 edet的安装 http://emacser.com/install-cedet.htm
 
-##例图
+##针对补全的3个截图
 ![图1](1.png)
+>
 ![图2](2.png)
+>
 ![图3](3.png)
 
 ##安装方法
