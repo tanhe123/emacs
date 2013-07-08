@@ -3,9 +3,9 @@ cedet是根据 http://emacser.com/cedet.htm 设置的。
 edet的安装 http://emacser.com/install-cedet.htm
 
 ##例图
-![图1](https://github.com/tanhe123/emacs/blob/master/1.png)
-![图2](https://github.com/tanhe123/emacs/blob/master/2.png)
-![图3](https://github.com/tanhe123/emacs/blob/master/3.png)
+![图1](1.png)
+![图2](2.png)
+![图3](3.png)
 
 ##安装方法
 		安装好 emacs 然后将代码仓库的
