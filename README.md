@@ -1,3 +1,10 @@
+新增更新
+----------------------------
+2013.7.31
+> 1.更改默认主题
+> 2.增加快速字体缩放(按住CTRL+滑轮)
+
+
 cedet是根据 http://emacser.com/cedet.htm 设置的。
 一起那用 auto-complete + clang 感觉好卡，就全卸了，用的 CVS 版的 edet.
 edet的安装 http://emacser.com/install-cedet.htm

@@ -3,7 +3,9 @@
 
 ;(setq stack-trace-on-error t)
 
-(tool-bar-mode -1);去掉工具栏 
+(tool-bar-mode -1);去掉工具栏
+(menu-bar-mode 0);隐藏菜单栏
+(scroll-bar-mode 0);隐藏滚轮
 (setq column-number-mode t);显示行列号
 (setq line-number-mode t)
 ;;(desktop-save-mode 1) ;自动打开上次文件
@@ -105,3 +107,14 @@
 ;;编译
 (define-key c-mode-base-map [(f7)] 'compile)
 '(compile-command "make")
+
+
+;;颜色配置
+(add-to-list 'load-path "~/.emacs.d/")
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-taylor)
+
+;;快速设置字体大小（CTRL+用滚轮）
+(global-set-key (kbd "<C-mouse-4>") 'text-scale-increase)
+(global-set-key (kbd "<C-mouse-5>") 'text-scale-decrease)
