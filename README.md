@@ -14,13 +14,15 @@
 >> sudo apt-get install sdcv  
 
 
+##边看题边敲代码（ACM）
+图：  
+![acming](acming.png)
+
 c/c++插件
 ---------------------------------------------------------
 cedet是根据 http://emacser.com/cedet.htm 设置的。  
 一起那用 auto-complete + clang 感觉好卡，就全卸了，用的 CVS 版的 edet.  
 edet的安装 http://emcser.com/install-cedet.htm  
-
-
 
 ##针对补全的2个截图
 图一：
