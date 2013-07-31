@@ -8,7 +8,7 @@
 (scroll-bar-mode 0);隐藏滚轮
 (setq column-number-mode t);显示行列号
 (setq line-number-mode t)
-;;(desktop-save-mode 1) ;自动打开上次文件
+(desktop-save-mode 1) ;自动打开上次文件
 ;;(setq inhibit-startup-message t);关闭启动画面
 
 (global-set-key (kbd "RET") 'newline-and-indent);自动缩进
@@ -118,3 +118,65 @@
 ;;快速设置字体大小（CTRL+用滚轮）
 (global-set-key (kbd "<C-mouse-4>") 'text-scale-increase)
 (global-set-key (kbd "<C-mouse-5>") 'text-scale-decrease)
+
+
+
+
+
+;;w3m配制
+(add-to-list 'load-path "~/emacs-w3m/")
+(require 'w3m-load)
+(require 'mime-w3m)
+(autoload 'w3m "w3m" "interface for w3m on emacs" t) 
+
+;; 设置w3m主页
+(setq w3m-home-page "http://www.baidu.com")
+
+;; 默认显示图片
+(setq w3m-default-display-inline-images t)
+(setq w3m-default-toggle-inline-images t)
+
+;; 使用cookies
+(setq w3m-use-cookies t)
+
+;;设定w3m运行的参数，分别为使用cookie和使用框架  
+(setq w3m-command-arguments '("-cookie" "-F"))               
+
+;; 使用w3m作为默认浏览器
+(setq browse-url-browser-function 'w3m-browse-url)                
+(setq w3m-view-this-url-new-session-in-background t)
+
+
+;;显示图标                                                      
+(setq w3m-show-graphic-icons-in-header-line t)                  
+(setq w3m-show-graphic-icons-in-mode-line t) 
+
+;;C-c C-p 打开，这个好用                                        
+(setq w3m-view-this-url-new-session-in-background t)  
+
+          
+(add-hook 'w3m-fontify-after-hook 'remove-w3m-output-garbages)                                    
+(defun remove-w3m-output-garbages ()                            
+"去掉w3m输出的垃圾."                                            
+(interactive)                                                   
+(let ((buffer-read-only))                                       
+(setf (point) (point-min))                                      
+(while (re-search-forward "[\200-\240]" nil t)                  
+(replace-match " "))                                            
+(set-buffer-multibyte t))                                       
+(set-buffer-modified-p nil))
+
+
+
+
+
+;;stardict星际译王
+;;要安装 stardict 和 sdcv (直接sudo apt-get )
+(require 'stardict)
+(global-set-key (kbd "C-c C-i") 'view-stardict-in-buffer)
+
+
+
+
+
+
