@@ -10,8 +10,8 @@
 >> 安装emacs-w3m  
 
 > 4.stardict 查词  
-sudo apt-get install stardict （自己加词库）  
-sudo apt-get install sdcv  
+>> sudo apt-get install stardict （自己加词库）  
+>> sudo apt-get install sdcv  
 
 
 c/c++插件
