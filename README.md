@@ -6,21 +6,18 @@
 > 3.新增w3m浏览网页  
 >> 说明(需要):  
 >> sudo apt-get install w3m-el-snapshot  
-
-http://blog.chinaunix.net/uid-26185912-id-3248452.html  
-安装emacs-w3m</br>
-
-> 4.stardict 查词</br>
-sudo apt-get install stardict （自己加词库）</br>
-sudo apt-get install sdcv</br>
-
+>> http://blog.chinaunix.net/uid-26185912-id-3248452.html  
+>> 安装emacs-w3m  
+> 4.stardict 查词  
+sudo apt-get install stardict （自己加词库）  
+sudo apt-get install sdcv  
 
 
 c/c++插件
 ---------------------------------------------------------
-cedet是根据 http://emacser.com/cedet.htm 设置的。</br>
-一起那用 auto-complete + clang 感觉好卡，就全卸了，用的 CVS 版的 edet.</br>
-edet的安装 http://emcser.com/install-cedet.htm</br>
+cedet是根据 http://emacser.com/cedet.htm 设置的。  
+一起那用 auto-complete + clang 感觉好卡，就全卸了，用的 CVS 版的 edet.  
+edet的安装 http://emcser.com/install-cedet.htm  
 
 
 
