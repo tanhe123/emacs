@@ -8,6 +8,7 @@
 >> sudo apt-get install w3m-el-snapshot  
 >> http://blog.chinaunix.net/uid-26185912-id-3248452.html  
 >> 安装emacs-w3m  
+
 > 4.stardict 查词  
 sudo apt-get install stardict （自己加词库）  
 sudo apt-get install sdcv  
