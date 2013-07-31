@@ -1,13 +1,13 @@
 新增更新
 ----------------------------
 2013.7.31
-> 1.更改默认主题</br>
-> 2.增加快速字体缩放(按住CTRL+滑轮)</br>
-> 3.新增w3m浏览网页</br>
-说明(需要)：</br>
-sudo apt-get install w3m-el-snapshot</br>
+> 1.更改默认主题  
+> 2.增加快速字体缩放(按住CTRL+滑轮)  
+> 3.新增w3m浏览网页  
+>> 说明(需要):  
+>> sudo apt-get install w3m-el-snapshot  
 
-http://blog.chinaunix.net/uid-26185912-id-3248452.html</br>
+http://blog.chinaunix.net/uid-26185912-id-3248452.html  
 安装emacs-w3m</br>
 
 > 4.stardict 查词</br>
