@@ -4,12 +4,20 @@
 > 1.更改默认主题  
 > 2.增加快速字体缩放(按住CTRL+滑轮)  
 > 3.新增w3m浏览网页  
->> 说明(需要):  
->> sudo apt-get install w3m-el-snapshot  
->> http://blog.chinaunix.net/uid-26185912-id-3248452.html  
->> 安装emacs-w3m  
+>> 说明(如果出现不能打开w3m-load，要安装w3m):  
+>>> 安装 w3m-el-snapshot  
+>>>> sudo apt-get install w3m-el-snapshot  
+>>> 安装emacs-w3m  
+>>>> cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot login  
+>>>> cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot co emacs-w3m  
+>>>> cd emacs-w3m  
+>>>> autoconf  
+>>>> ./configure  
+>>>> sudo make  
+>>>> sudo make install  
 
 > 4.stardict 查词  
+>> 如果 emacs提示 /bin/bash: sdcv: 未找到命令，说明未安装stardict 和 sdcv  
 >> sudo apt-get install stardict （自己加词库）  
 >> sudo apt-get install sdcv  
 
