@@ -1,4 +1,3 @@
-#+begin_src emacs-lisp
 ;; Author : pluskid
 ;; Modified By : lishuo
 ;;
@@ -36,4 +35,3 @@ process
 (delete-window)))))
 (goto-char (point-min))))))))
 (provide 'stardict)
-#+end_src
