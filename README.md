@@ -3,10 +3,12 @@
 2013.7.31
 > 1.更改默认主题  
 > 2.增加快速字体缩放(按住CTRL+滑轮)  
+
 > 3.新增w3m浏览网页  
 >> 说明(如果出现不能打开w3m-load，要安装w3m):  
 >>> 安装 w3m-el-snapshot  
->>>> sudo apt-get install w3m-el-snapshot  
+>>>> sudo apt-get install w3m-el-snapshot
+
 >>> 安装emacs-w3m  
 >>>> cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot login  
 >>>> cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot co emacs-w3m  
