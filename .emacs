@@ -108,7 +108,6 @@
 (define-key c-mode-base-map [(f7)] 'compile)
 '(compile-command "make")
 
-
 ;;颜色配置
 (add-to-list 'load-path "~/.emacs.d/")
 (require 'color-theme)
@@ -118,10 +117,6 @@
 ;;快速设置字体大小（CTRL+用滚轮）
 (global-set-key (kbd "<C-mouse-4>") 'text-scale-increase)
 (global-set-key (kbd "<C-mouse-5>") 'text-scale-decrease)
-
-
-
-
 
 ;;w3m配制
 (add-to-list 'load-path "~/emacs-w3m/")
@@ -153,7 +148,6 @@
 
 ;;C-c C-p 打开，这个好用                                        
 (setq w3m-view-this-url-new-session-in-background t)  
-
           
 (add-hook 'w3m-fontify-after-hook 'remove-w3m-output-garbages)                                    
 (defun remove-w3m-output-garbages ()                            
@@ -166,17 +160,15 @@
 (set-buffer-multibyte t))                                       
 (set-buffer-modified-p nil))
 
-
-
-
-
 ;;stardict星际译王
 ;;要安装 stardict 和 sdcv (直接sudo apt-get )
 (require 'stardict)
 (global-set-key (kbd "C-c C-i") 'view-stardict-in-buffer)
 
 
-
-
-
-
+;;markdown-mode
+(add-to-list 'load-path "~/.emacs.d/modes")
+(autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
