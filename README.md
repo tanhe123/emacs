@@ -1,5 +1,8 @@
 新增更新
 ----------------------------
+2013.08.04
+> 1.默认启动最大化  
+
 2013.08.03
 > 1.新增markdown-mode  
 
@@ -10,8 +13,7 @@
 > 3.新增w3m浏览网页  
 >> 说明如果出现不能打开w3m-load，要安装w3m, 具体操作如下:  
 >>> 安装 w3m-el-snapshot  
->>>> sudo apt-get install w3m-el-snapshot
-
+>>>> sudo apt-get install w3m-el-snapshot  
 >>> 安装emacs-w3m  
 >>>> cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot login  
 >>>> cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot co emacs-w3m  

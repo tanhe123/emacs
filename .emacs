@@ -15,20 +15,35 @@
 
 ;(define-key c++-mode-map (kbd ";") 'self-insert-command);取消分号自动缩进
 
+;;最大化  
+(defun my-maximized ()  
+  (interactive)  
+  (x-send-client-message  
+    nil 0 nil "_NET_WM_STATE" 32  
+    '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)  
+  )  
+  (x-send-client-message  
+    nil 0 nil "_NET_WM_STATE" 32  
+    '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0)  
+  )  
+)  
+;;启动时最大化  
+(my-maximized)  
+
 ;;C/C++  mode
-;(defun my-c-mode-auto-pair ()
-;  (interactive)
-;  (make-local-variable 'skeleton-pair-alist)
-;  (setq skeleton-pair-alist  '(
-;    (?{ \n > _ \n ?} >)))
-;  (setq skeleton-pair t)
-;  (local-set-key (kbd "(") 'skeleton-pair-insert-maybe)
-;  (local-set-key (kbd "[") 'skeleton-pair-insert-maybe)
-;  (local-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
-;  (local-set-key (kbd "{") 'skeleton-pair-insert-maybe)   
-;  (backward-char))
-;(add-hook 'c-mode-hook 'my-c-mode-auto-pair)
-;(add-hook 'c++-mode-hook 'my-c-mode-auto-pair)
+;;(defun my-c-mode-auto-pair ()
+;;  (interactive)
+;;  (make-local-variable 'skeleton-pair-alist)
+;;  (setq skeleton-pair-alist  '(
+;;    (?{ \n > _ \n ?} >)))
+;;  (setq skeleton-pair t)
+;;  (local-set-key (kbd "(") 'skeleton-pair-insert-maybe)
+;;  (local-set-key (kbd "[") 'skeleton-pair-insert-maybe)
+;;  (local-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
+;;  (local-set-key (kbd "{") 'skeleton-pair-insert-maybe)   
+;;  (backward-char))
+;;(add-hook 'c-mode-hook 'my-c-mode-auto-pair)
+;;(add-hook 'c++-mode-hook 'my-c-mode-auto-pair)
 
 (defun my-c-mode-set ()
   (c-set-style "k&r")
@@ -38,10 +53,8 @@
 ;; 设置C/C++语言缩进字符数
   (setq c-basic-offset 4))
 
-
 (add-hook 'c-mode-hook 'my-c-mode-set)
 (add-hook 'c++-mode-hook 'my-c-mode-set)
-
 
 ;;cedet配置
 (add-to-list 'load-path "/home/tan/.emacs.d/plugins/cedet/common")
