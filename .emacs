@@ -8,6 +8,7 @@
 (scroll-bar-mode 0);隐藏滚轮
 (setq column-number-mode t);显示行列号
 (setq line-number-mode t)
+
 (desktop-save-mode 1) ;自动打开上次文件
 ;;(setq inhibit-startup-message t);关闭启动画面
 
@@ -23,12 +24,17 @@
     '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)  
   )  
   (x-send-client-message  
-    nil 0 nil "_NET_WM_STATE" 32  
+   nil 0 nil "_NET_WM_STATE" 32
     '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0)  
   )  
 )  
 ;;启动时最大化  
-(my-maximized)  
+(my-maximized)
+
+(add-to-list 'load-path "/home/tan/.emacs.d/mode/line-mode.el")
+(require 'linum)
+(global-linum-mode t)
+
 
 ;;C/C++  mode
 ;;(defun my-c-mode-auto-pair ()
