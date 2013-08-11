@@ -20,8 +20,8 @@
 1. 说明如果出现不能打开w3m-load，要安装w3m, 具体操作如下:  
 > 安装 w3m-el-snapshot  
 >> sudo apt-get install w3m-el-snapshot  
-
-> 安装emacs-w3m(要保证在~/目录下操作)  
+>
+安装emacs-w3m(要保证在~/目录下操作)  
 >> cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot login  
 >> 提示输入密码, 密码为空  
 >> cvs -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot co emacs-w3m  
