@@ -31,25 +31,9 @@
 ;;启动时最大化  
 (my-maximized)
 
-(add-to-list 'load-path "/home/tan/.emacs.d/mode/line-mode.el")
+(add-to-list 'load-path "/home/tan/.emacs.d/modes/line-mode.el")
 (require 'linum)
 (global-linum-mode t)		
-
-
-;;C/C++  mode
-;;(defun my-c-mode-auto-pair ()
-;;  (interactive)
-;;  (make-local-variable 'skeleton-pair-alist)
-;;  (setq skeleton-pair-alist  '(
-;;    (?{ \n > _ \n ?} >)))
-;;  (setq skeleton-pair t)
-;;  (local-set-key (kbd "(") 'skeleton-pair-insert-maybe)
-;;  (local-set-key (kbd "[") 'skeleton-pair-insert-maybe)
-;;  (local-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
-;;  (local-set-key (kbd "{") 'skeleton-pair-insert-maybe)   
-;;  (backward-char))
-;;(add-hook 'c-mode-hook 'my-c-mode-auto-pair)
-;;(add-hook 'c++-mode-hook 'my-c-mode-auto-pair)
 
 (defun my-c-mode-set ()
   (c-set-style "k&r")
@@ -81,13 +65,6 @@
 (defconst cedet-user-include-dirs
   (list ".." "../include" "../inc" "../common" "../public"
         "../.." "../../include" "../../inc" "../../common" "../../public"))
-;;(defconst cedet-win32-include-dirs
-;;  (list "C:/MinGW/include"
-;;        "C:/MinGW/include/c++/3.4.5"
-;;        "C:/MinGW/include/c++/3.4.5/mingw32"
-;;        "C:/MinGW/include/c++/3.4.5/backward"
-;;        "C:/MinGW/lib/gcc/mingw32/3.4.5/include"
-;;        "C:/Program Files/Microsoft Visual Studio/VC98/MFC/Include"))
 
 (require 'semantic-c nil 'noerror)
 (let ((include-dirs cedet-user-include-dirs))
@@ -101,13 +78,7 @@
 ;; Enable SRecode (Template management) minor-mode.
 (global-srecode-minor-mode 1)
 
-;;;; 当输入"."或">"时，在另一个窗口中列出结构体或类的成员
-(defun my-c-mode-cedet-hook ()
-  (local-set-key "." 'semantic-complete-self-insert)
-  (local-set-key ">" 'semantic-complete-self-insert))
-(add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
-
-;;;;更强的自动补齐策略hippie-expand
+;;更强的自动补齐策略hippie-expand
 (defun my-indent-or-complete ()
    (interactive)
    (if (looking-at "//>")
@@ -120,7 +91,7 @@
 (autoload 'senator-try-expand-semantic "senator")
 (setq hippie-expand-try-functions-list
           '(
-              senator-try-expand-semantic
+              senator-try-expand-semantic 
                    try-expand-dabbrev
                    try-expand-dabbrev-visible
                    try-expand-dabbrev-all-buffers
@@ -223,3 +194,11 @@
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+
+;;company
+(add-to-list 'load-path "~/.emacs.d/plugins/company-mode")
+(autoload 'company-mode "company" nil t)
+(setq company-idle-delay t)
+;;设置其最小补全前缀
+(setq company-minimum-prefix-length 3) 
