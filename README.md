@@ -45,7 +45,7 @@
 4. company-mode不能启用  
 > 请M-x company-mode)
 
-##新增的company补全
+##新增的company补全(2013.08.14)
 ![company-mode](company.png)
 
 ##边看题边敲代码（ACM）
