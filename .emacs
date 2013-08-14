@@ -4,7 +4,7 @@
 ;(setq stack-trace-on-error t)
 
 (tool-bar-mode -1);去掉工具栏
-(menu-bar-mode 0);隐藏菜单栏
+;;(menu-bar-mode 0);隐藏菜单栏
 (scroll-bar-mode 0);隐藏滚轮
 (setq column-number-mode t);显示行列号
 (setq line-number-mode t)
@@ -33,7 +33,7 @@
 
 (add-to-list 'load-path "/home/tan/.emacs.d/mode/line-mode.el")
 (require 'linum)
-(global-linum-mode t)
+(global-linum-mode t)		
 
 
 ;;C/C++  mode
@@ -70,18 +70,12 @@
 ;; Enable EDE (Project Management) features
 (global-ede-mode 1)
  
-(semantic-load-enable-excessive-code-helpers)
-(semantic-load-enable-semantic-debugging-helpers)
- 
-;; Enable SRecode (Template management) minor-mode.
-(global-srecode-minor-mode 1)
-
 ;;semantc
 ;; (semantic-load-enable-minimum-features)
-(semantic-load-enable-code-helpers)
+;; (semantic-load-enable-code-helpers)
 ;; (semantic-load-enable-guady-code-helpers)
-;; (semantic-load-enable-excessive-code-helpers)
-(semantic-load-enable-semantic-debugging-helpers)
+(semantic-load-enable-excessive-code-helpers)
+;; (semantic-load-enable-semantic-debugging-helpers)
 
 ;; (setq semanticdb-project-roots (list (expand-file-name "/")))
 (defconst cedet-user-include-dirs
@@ -94,6 +88,7 @@
 ;;        "C:/MinGW/include/c++/3.4.5/backward"
 ;;        "C:/MinGW/lib/gcc/mingw32/3.4.5/include"
 ;;        "C:/Program Files/Microsoft Visual Studio/VC98/MFC/Include"))
+
 (require 'semantic-c nil 'noerror)
 (let ((include-dirs cedet-user-include-dirs))
   (when (eq system-type 'windows-nt)
@@ -102,6 +97,43 @@
           (semantic-add-system-include dir 'c++-mode)
           (semantic-add-system-include dir 'c-mode))
         include-dirs))
+
+;; Enable SRecode (Template management) minor-mode.
+(global-srecode-minor-mode 1)
+
+;;;; 当输入"."或">"时，在另一个窗口中列出结构体或类的成员
+(defun my-c-mode-cedet-hook ()
+  (local-set-key "." 'semantic-complete-self-insert)
+  (local-set-key ">" 'semantic-complete-self-insert))
+(add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
+
+;;;;更强的自动补齐策略hippie-expand
+(defun my-indent-or-complete ()
+   (interactive)
+   (if (looking-at "//>")
+          (hippie-expand nil)
+          (indent-for-tab-command))
+)
+ 
+(global-set-key [(control tab)] 'my-indent-or-complete)
+ 
+(autoload 'senator-try-expand-semantic "senator")
+(setq hippie-expand-try-functions-list
+          '(
+              senator-try-expand-semantic
+                   try-expand-dabbrev
+                   try-expand-dabbrev-visible
+                   try-expand-dabbrev-all-buffers
+                   try-expand-dabbrev-from-kill
+                   try-expand-list
+                   try-expand-list-all-buffers
+                   try-expand-line
+        try-expand-line-all-buffers
+        try-complete-file-name-partially
+        try-complete-file-name
+        try-expand-whole-kill
+        )
+)
 
 ;;semantic-ia-fast-jump 跳转到函数的定义 绑定到f12
 (global-set-key [f12] 'semantic-ia-fast-jump)
