@@ -1,7 +1,9 @@
 
 (setq x-select-enable-clipboard t)
 
-;(setq stack-trace-on-error t)
+;;(setq stack-trace-on-error t)
+
+
 
 (tool-bar-mode -1);去掉工具栏
 ;;(menu-bar-mode 0);隐藏菜单栏
@@ -31,9 +33,13 @@
 ;;启动时最大化  
 (my-maximized)
 
+
 (add-to-list 'load-path "/home/tan/.emacs.d/modes/line-mode.el")
 (require 'linum)
 (global-linum-mode t)		
+
+
+
 
 (defun my-c-mode-set ()
   (c-set-style "k&r")
@@ -201,4 +207,28 @@
 (autoload 'company-mode "company" nil t)
 (setq company-idle-delay t)
 ;;设置其最小补全前缀
-(setq company-minimum-prefix-length 3) 
+(setq company-minimum-prefix-length 1) 
+
+;;Monaco-14
+(set-default-font "Monaco-14")
+
+;; yasnippet
+(add-to-list 'load-path
+             "~/.emacs.d/plugins/yasnippet-0.6.0c")
+(require 'yasnippet)
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/plugins/snippets")
+(yas/global-mode 1)
+;;解决ac与yas冲突
+(yas/minor-mode-on)
+
+;; auto complete
+;;(add-to-list 'load-path "~/.emacs.d/plugins/auto-complete-1.3.1/")
+;;(require 'auto-complete)
+;;(require 'auto-complete-config)
+;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete-1.3.1/ac-dict")
+;;(global-auto-complete-mode t)
+;;(ac-config-default)
+
+
+
