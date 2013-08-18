@@ -9,6 +9,7 @@
 2013.08.14
 > 1.增强补全功能  
 > 2.新增company-mode补全  
+>> 要使用company-mode的自动补全，需要先输入一个emacs命令，M x company-mode
 
 2013.08.08
 > 1.默认启动line-mode  
