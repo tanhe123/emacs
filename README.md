@@ -1,15 +1,14 @@
 新增更新
 ----------------------------
-2013.08.18
-> 1.取消auto-complete模式（只是注释了配置，取消注释即可开启)
+2013.08.21
+> 1.完善auto-complete模式(超爽，强烈推荐)  
 
 2013.08.17
 > 1.新增auto-complete模式  
 > 2.解决ac 与 yas冲突问题  
 2013.08.14
 > 1.增强补全功能  
-> 2.新增company-mode补全  
->> 要使用company-mode的自动补全，需要先输入一个emacs命令，M x company-mode
+> 2.新增company-mode补全(默认关闭,开启命令M-x company-mode)  
 
 2013.08.08
 > 1.默认启动line-mode  

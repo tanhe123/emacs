@@ -1,10 +1,14 @@
-
 (setq x-select-enable-clipboard t)
 
-;(setq stack-trace-on-error t)
+;;(setq stack-trace-on-error t)
+
+;;将tab转化成空格
+(setq indent-tabs-mode nil)
+(setq tab-width 4)
+;;(setq c-basic-offset 4)
 
 (tool-bar-mode -1);去掉工具栏
-;;(menu-bar-mode 0);隐藏菜单栏
+(menu-bar-mode 0);隐藏菜单栏
 (scroll-bar-mode 0);隐藏滚轮
 (setq column-number-mode t);显示行列号
 (setq line-number-mode t)
@@ -17,19 +21,20 @@
 ;(define-key c++-mode-map (kbd ";") 'self-insert-command);取消分号自动缩进
 
 ;;最大化  
-(defun my-maximized ()  
-  (interactive)  
-  (x-send-client-message  
-    nil 0 nil "_NET_WM_STATE" 32  
-    '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)  
-  )  
-  (x-send-client-message  
-   nil 0 nil "_NET_WM_STATE" 32
-    '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0)  
-  )  
-)  
+;;(defun my-maximized ()  
+;;  (interactive)  
+;;  (x-send-client-message  
+;;    nil 0 nil "_NET_WM_STATE" 32  
+;;    '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)  
+;;  )  
+;;  (x-send-client-message  
+;;   nil 0 nil "_NET_WM_STATE" 32
+;;    '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0)  
+;;  )  
+;;)  
 ;;启动时最大化  
-(my-maximized)
+;;(my-maximized)
+
 
 (add-to-list 'load-path "/home/tan/.emacs.d/modes/line-mode.el")
 (require 'linum)
@@ -55,13 +60,13 @@
 (global-ede-mode 1)
  
 ;;semantc
-;; (semantic-load-enable-minimum-features)
-;; (semantic-load-enable-code-helpers)
-;; (semantic-load-enable-guady-code-helpers)
-(semantic-load-enable-excessive-code-helpers)
-;; (semantic-load-enable-semantic-debugging-helpers)
+;;(semantic-load-enable-minimum-features)
+(semantic-load-enable-code-helpers)
+;;(semantic-load-enable-guady-code-helpers)
+;;(semantic-load-enable-excessive-code-helpers)
+(semantic-load-enable-semantic-debugging-helpers)
 
-;; (setq semanticdb-project-roots (list (expand-file-name "/")))
+(setq semanticdb-project-roots (list (expand-file-name "/")))
 (defconst cedet-user-include-dirs
   (list ".." "../include" "../inc" "../common" "../public"
         "../.." "../../include" "../../inc" "../../common" "../../public"))
@@ -121,10 +126,12 @@
                         (setq first (cdr (car (cdr alist)))))
                     (semantic-mrub-switch-tags first))))
 
+
+
 ;;跳到函数声明去，在声明处再执行的话就会再跳回函数体，把它绑定到M-S-F12
 (define-key c-mode-base-map [M-S-f12] 'semantic-analyze-proto-impl-toggle)
 ;;补全
-(define-key c-mode-base-map (kbd "M-n") 'semantic-ia-complete-symbol-menu)
+;;(define-key c-mode-base-map (kbd "M-n") 'semantic-ia-complete-symbol-menu)
 
 ;;编译
 (define-key c-mode-base-map [(f7)] 'compile)
@@ -134,7 +141,10 @@
 (add-to-list 'load-path "~/.emacs.d/")
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-taylor)
+;; 适和在终端下使用
+(color-theme-taming-mr-arneson)
+;;(color-theme-taylor)
+
 
 ;;快速设置字体大小（CTRL+用滚轮）
 (global-set-key (kbd "<C-mouse-4>") 'text-scale-increase)
@@ -172,14 +182,14 @@
 (setq w3m-view-this-url-new-session-in-background t)  
           
 (add-hook 'w3m-fontify-after-hook 'remove-w3m-output-garbages)                                    
-(defun remove-w3m-output-garbages ()                            
-"去掉w3m输出的垃圾."                                            
-(interactive)                                                   
-(let ((buffer-read-only))                                       
-(setf (point) (point-min))                                      
-(while (re-search-forward "[\200-\240]" nil t)                  
-(replace-match " "))                                            
-(set-buffer-multibyte t))                                       
+(defun remove-w3m-output-garbages ()
+"去掉w3m输出的垃圾."
+(interactive)
+(let ((buffer-read-only))
+  (setf (point) (point-min))
+(while (re-search-forward "[\200-\240]" nil t)
+  (replace-match " "))
+(set-buffer-multibyte t))
 (set-buffer-modified-p nil))
 
 ;;stardict星际译王
@@ -196,17 +206,53 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 
-;;company
-(add-to-list 'load-path "~/.emacs.d/plugins/company-mode")
-(autoload 'company-mode "company" nil t)
-(setq company-idle-delay t)
-;;设置其最小补全前缀
-(setq company-minimum-prefix-length 1) 
+;;;;company
+;;(add-to-list 'load-path "~/.emacs.d/plugins/company-mode")
+;;(autoload 'company-mode "company" nil t)
+;;(setq company-idle-delay t)
+;;;;设置其最小补全前缀
+;;(setq company-minimum-prefix-length 1) 
+
+;;Monaco-14
 (set-default-font "Monaco-14")
+
+;; yasnippet
 (add-to-list 'load-path
              "~/.emacs.d/plugins/yasnippet-0.6.1c")
 (require 'yasnippet)
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/plugins/snippets")
 (yas/global-mode 1)
+;;解决ac与yas冲突
 (yas/minor-mode-on)
+
+;; auto complete
+(add-to-list 'load-path "~/.emacs.d/plugins/auto-complete/")
+(require 'auto-complete)
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete/ac-dict")
+(ac-config-default)
+
+
+(add-hook 'c-mode-common-hook '(lambda ()
+          ;; ac-omni-completion-sources is made buffer local so
+          ;; you need to add it to a mode hook to activate on 
+          ;; whatever buffer you want to use it with.  This
+          ;; example uses C mode (as you probably surmised).
+          ;; auto-complete.el expects ac-omni-completion-sources to be
+          ;; a list of cons cells where each cell's car is a regex
+          ;; that describes the syntactical bits you want AutoComplete
+          ;; to be aware of. The cdr of each cell is the source that will
+          ;; supply the completion data.  The following tells autocomplete
+          ;; to begin completion when you type in a . or a ->
+          (add-to-list 'ac-omni-completion-sources
+                       (cons "\\." '(ac-source-semantic)))
+          (add-to-list 'ac-omni-completion-sources
+                       (cons "->" '(ac-source-semantic)))
+          ;; ac-sources was also made buffer local in new versions of
+          ;; autocomplete.  In my case, I want AutoComplete to use 
+          ;; semantic and yasnippet (order matters, if reversed snippets
+          ;; will appear before semantic tag completions).
+          (setq ac-sources '(ac-source-semantic ac-source-yasnippet))
+  ))
+
