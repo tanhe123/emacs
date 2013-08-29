@@ -251,10 +251,10 @@
 (yas/minor-mode-on)
 
 ;; auto complete
-(add-to-list 'load-path "~/.emacs.d/plugins/autocomplete/")
+(add-to-list 'load-path "~/.emacs.d/plugins/auto-complete/")
 (require 'auto-complete)
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/autocomplete/dict")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete/dict")
 (ac-config-default)
 
 ;; 输入. 或 > 自动补全

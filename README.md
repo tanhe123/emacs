@@ -9,7 +9,6 @@
 > 2.解决ac 与 yas冲突问题  
 2013.08.14
 > 1.增强补全功能  
-> 2.新增company-mode补全(默认关闭,开启命令M-x company-mode)  
 
 2013.08.08
 > 1.默认启动line-mode  
@@ -48,12 +47,6 @@
 
 3. /bin/bash: markdown: 未找到命令  
 > sudo apt-get install markdown  
-
-4. company-mode不能启用  
-> 请M-x company-mode)
-
-##新增的company补全(2013.08.14)
-![company-mode](company.png)
 
 ##边看题边敲代码（ACM）
 图：  
