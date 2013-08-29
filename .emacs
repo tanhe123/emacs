@@ -237,14 +237,6 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-
-;;;;company
-;;(add-to-list 'load-path "~/.emacs.d/plugins/company-mode")
-;;(autoload 'company-mode "company" nil t)
-;;(setq company-idle-delay t)
-;;;;设置其最小补全前缀
-;;(setq company-minimum-prefix-length 1) 
-
 ;;Monaco-14
 (set-default-font "Monaco-14")
 
@@ -259,10 +251,10 @@
 (yas/minor-mode-on)
 
 ;; auto complete
-(add-to-list 'load-path "~/.emacs.d/plugins/auto-complete/")
+(add-to-list 'load-path "~/.emacs.d/plugins/autocomplete/")
 (require 'auto-complete)
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete/dict")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/autocomplete/dict")
 (ac-config-default)
 
 ;; 输入. 或 > 自动补全
