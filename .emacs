@@ -309,7 +309,7 @@
  '(jde-complete-function (quote jde-complete-menu))
  '(jde-debugger (quote ("jdb")))
  ;; 指定jdk
- '(jde-jdk-registry (quote (("java-7-oracle" . "/usr/lib/jvm/java-7-oracle"))))
+ '(jde-jdk-registry (quote (("1.7.0" . "/usr/lib/jvm/java-7-oracle"))))
 ;; '(jde-jdk-registry (quote (("1.6.0_29" . "/usr/jdk1.6.0_29"))))
  '(jde-resolve-relative-paths-p t)
  '(jde-run-option-debug (quote ("Server" "Socket" "javadebug" nil "5005" t))))
