@@ -226,8 +226,8 @@
 
 ;;stardict星际译王
 ;;要安装 stardict 和 sdcv (直接sudo apt-get )
-(require 'stardict)
-(global-set-key (kbd "C-c C-i") 'view-stardict-in-buffer)
+;;(require 'stardict)
+;;(global-set-key (kbd "C-c C-i") 'view-stardict-in-buffer)
 
 
 ;;markdown-mode
@@ -266,3 +266,50 @@
   (local-set-key "." 'ac-complete-semantic-self-insert)
   (local-set-key ">" 'ac-complete-semantic-self-insert))
 (add-hook 'c-mode-common-hook 'my-c-mode-ac-complete-hook)
+
+;; JDEE configuratio
+;; Set the debug option to enable a backtrace when a
+;; problem occurs.
+;; 当有问题出现显示错误信息，便于调试
+(setq debug-on-error t)
+;; Update the Emacs load-path to include the path to
+;; the JDE and its require packages. This code assumes
+;; that you have installed the packages in the emacs/site
+;; subdirectory of your home directory.
+;; 加载所需的package
+;;(add-to-list 'load-path (expand-file-name "~/emacs/semantic-1.3.3"))
+;;(add-to-list 'load-path (expand-file-name "~/emacs/speedbar-0.13"))
+;;(add-to-list 'load-path (expand-file-name "~/emacs/eieio-0.16"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/plugins/jdee-2.4.1/lisp"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/plugins/elib-1.0"))
+;; If you want Emacs to defer loading the JDE until you open a
+;; Java file, edit the following line
+;; 不自动加载jde-mode
+(setq defer-loading-jde t)
+;; to read:
+;;
+;;  (setq defer-loading-jde t)
+;;
+;; 编辑.java文件时加载jde
+(if defer-loading-jde
+   (progn
+     (autoload 'jde-mode "jde" "JDE mode." t)
+     (setq auto-mode-alist
+           (append
+            '(("\\.java\\'" . jde-mode))
+            auto-mode-alist)))
+ (require 'jde))
+
+
+(custom-set-variables
+ '(browse-url-browser-function (quote browse-url-generic))
+ '(browse-url-generic-program "chromium-browser")
+ '(column-number-mode t)
+
+ '(jde-complete-function (quote jde-complete-menu))
+ '(jde-debugger (quote ("jdb")))
+ ;; 指定jdk
+ '(jde-jdk-registry (quote (("java-7-oracle" . "/usr/lib/jvm/java-7-oracle"))))
+;; '(jde-jdk-registry (quote (("1.6.0_29" . "/usr/jdk1.6.0_29"))))
+ '(jde-resolve-relative-paths-p t)
+ '(jde-run-option-debug (quote ("Server" "Socket" "javadebug" nil "5005" t))))
