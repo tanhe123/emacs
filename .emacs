@@ -40,16 +40,18 @@
 (global-set-key [f5] 'query-replace)	 ;M-x query-replace
 (global-set-key [f8] 'ispell)		 ;spell check
 
+;; 显示行号
 (add-to-list 'load-path "/home/tan/.emacs.d/modes/line-mode.el")
 (require 'linum)
 (global-linum-mode t)		
 
 (defun my-c-mode-set ()
   (c-set-style "k&r")
-  (hs-minor-mode t)
-;;在状态条上显示当前光标在哪个函数体内部
+  ;;hs-mode 即代码折叠mode
+  (hs-minor-mode t)	      
+  ;;在状态条上显示当前光标在哪个函数体内部
   (which-function-mode)
-;; 设置C/C++语言缩进字符数
+  ;;设置C/C++语言缩进字符数
   (setq c-basic-offset 4))
 
 (add-hook 'c-mode-hook 'my-c-mode-set)
@@ -63,6 +65,11 @@
 ;; Enable EDE (Project Management) features
 (global-ede-mode 1)
 
+;; cscope
+(add-hook 'c-mode-common-hook
+	  '(lambda ()
+	    (require 'xcscope)))
+;;(require 'xcscope)
 
 ;;semantc
 (semantic-load-enable-minimum-features)
@@ -92,56 +99,8 @@
 
 (autoload 'senator-try-expand-semantic "senator")               ;优先调用了senator的分析结果
 
-;;;; C/C++语言启动时自动加载semantic对/usr/include的索引数据库
-;;(setq semanticdb-search-system-databases t)
-;;(add-hook 'c-mode-common-hook
-;;          (lambda ()
-;;            (setq semanticdb-project-system-databases
-;;                  (list (semanticdb-create-database
-;;                         semanticdb-new-database-class
-;;                         "/usr/include")))))
-;;(add-hook 'c++-mode-common-hook
-;;          (lambda ()
-;;            (setq semanticdb-project-system-databases
-;;                  (list (semanticdb-create-database
-;;                         semanticdb-new-database-class
-;;                         "/usr/include")))))
-;;
-
 ;; Enable SRecode (Template management) minor-mode.
 (global-srecode-minor-mode 1)
-
-;;;;更强的自动补齐策略hippie-expand
-;;(defun my-indent-or-complete ()
-;;   (interactive)
-;;   (if (looking-at "//>")
-;;          (hippie-expand nil)
-;;          (indent-for-tab-command))
-;;)
-
-;;;;补全快捷键，ctrl+tab用senator补全，不显示列表
-;;;;alt+/补全，显示列表让选择
-;;(global-set-key [(control tab)] 'my-indent-or-complete)
-;;(define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
-;;(autoload 'senator-try-expand-semantic "senator")
-;;(setq hippie-expand-try-functions-list
-;;	  '(
-;;		senator-try-expand-semantic
-;;		try-expand-dabbrev
-;;		try-expand-dabbrev-visible
-;;		try-expand-dabbrev-all-buffers
-;;		try-expand-dabbrev-from-kill
-;;		try-expand-list
-;;		try-expand-list-all-buffers
-;;		try-expand-line
-;;		try-expand-line-all-buffers
-;;		try-complete-file-name-partially
-;;		try-complete-file-name
-;;		try-expand-whole-kill
-;;		)
-;;	  )
-;;
-
 
 ;;semantic-ia-fast-jump 跳转到函数的定义 绑定到f12
 (global-set-key [f12] 'semantic-ia-fast-jump)
